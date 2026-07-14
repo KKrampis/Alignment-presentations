@@ -164,9 +164,17 @@ Karvonen, A., Chua, J., Dumas, C., Fraser-Taliente, K., Kantamneni, S., Minder, 
 Huang, V., Choi, D., Johnson, D. D., Schwettmann, S., & Steinhardt, J. (2025). <em>Predictive Concept Decoders: Training Scalable End-to-End Interpretability Assistants.</em> arXiv:2512.15712 [cs.AI]. https://arxiv.org/abs/2512.15712
 </div>
 
-<div class="ref">
-Pan, A., Chen, L., & Steinhardt, J. (2024). <em>LatentQA: Teaching LLMs to Decode Activations Into Natural Language.</em> arXiv:2412.08686 [cs.LG]. https://arxiv.org/abs/2412.08686
-</div>
+---
+
+<!-- _class: content -->
+
+# What Activation Oracles are used for
+
+- Recovering information fine-tuned into a model — biographical facts, malign propensities — that never appears in the input text, even though the oracle was never trained on activations from that fine-tuned model
+- Flagship demo: exposing both a secret goal and a secret word from a model secretly fine-tuned to play "Taboo" — purely from activations, not outputs
+- **Auditing games** (Section 4) — controlled benchmarks testing whether a tool can uncover fine-tuned knowledge/behavior a model won't reveal through ordinary prompting
+  - Secret-keeping: extracting hidden words, gender assumptions, or hidden instructions (Taboo, User Gender, SSC)
+  - Emergent misalignment audits: describing what's driving a narrowly misaligned model, given base/fine-tuned activation differences
 
 ---
 
@@ -182,16 +190,6 @@ Pan, A., Chen, L., & Steinhardt, J. (2024). <em>LatentQA: Teaching LLMs to Decod
   - Classification — 7 binary NLP tasks (sentiment, language ID, entailment, etc.)
   - Self-supervised context prediction — predict surrounding tokens from an activation sequence, no input/target overlap
 - **Scale:** ~1M examples, activations from 3 depths (25/50/75%) of the *base* model; evaluated at 50% depth; 10 H100-hrs (Qwen3-8B) / 90 H200-hrs (Llama-3.3-70B)
-
----
-
-<!-- _class: content -->
-
-# What Activation Oracles are used for
-
-- Recovering information fine-tuned into a model — biographical facts, malign propensities — that never appears in the input text, even though the oracle was never trained on activations from that fine-tuned model
-- **Secret-keeping** (Section 4, "auditing games"): extracting hidden words, gender assumptions, or hidden instructions (Taboo, User Gender, SSC) — flagship demo exposes both a secret goal and a secret word from a model fine-tuned to play "Taboo," purely from activations, not outputs
-- **Emergent misalignment audits:** describing what's driving a narrowly misaligned model, given base/fine-tuned activation differences
 
 ---
 
